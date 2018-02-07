@@ -73,19 +73,36 @@ export interface Frames {
 
 /**
  * @class
+ * Initializes a new instance of the Score class.
+ * @constructor
+ * The classification score details of the text. <a
+ * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
+ * on category classification.
+ *
+ * @member {number} [score] The category score.
+ */
+export interface Score {
+  score?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Classification class.
  * @constructor
  * The classification details of the text.
  *
- * @member {number} [adultScore] The adult score.
- * @member {number} [racyScore] The racy score.
- * @member {number} [offensiveScore] The offensive score.
+ * @member {object} [category1]
+ * @member {number} [category1.score] The category score.
+ * @member {object} [category2]
+ * @member {number} [category2.score] The category score.
+ * @member {object} [category3]
+ * @member {number} [category3.score] The category score.
  * @member {boolean} [reviewRecommended] The review recommended flag.
  */
 export interface Classification {
-  adultScore?: number;
-  racyScore?: number;
-  offensiveScore?: number;
+  category1?: Score;
+  category2?: Score;
+  category3?: Score;
   reviewRecommended?: boolean;
 }
 
@@ -223,9 +240,12 @@ export interface DetectedTerms {
  * @member {string} [autoCorrectedText] The autocorrected text
  * @member {array} [misrepresentation] The misrepresentation text.
  * @member {object} [classification] The classification details of the text.
- * @member {number} [classification.adultScore] The adult score.
- * @member {number} [classification.racyScore] The racy score.
- * @member {number} [classification.offensiveScore] The offensive score.
+ * @member {object} [classification.category1]
+ * @member {number} [classification.category1.score] The category score.
+ * @member {object} [classification.category2]
+ * @member {number} [classification.category2.score] The category score.
+ * @member {object} [classification.category3]
+ * @member {number} [classification.category3.score] The category score.
  * @member {boolean} [classification.reviewRecommended] The review recommended
  * flag.
  * @member {object} [status] The evaluate status.
